@@ -2,6 +2,7 @@ import pytest
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from datetime import datetime, timedelta
+from fastapi.exceptions import HTTPException
 from app.db.base import Base
 from app.models.station import Station
 from app.schemas.station import StationCreate, StationUpdate
@@ -159,3 +160,48 @@ def test_get_metrics(db_session):
     stations = StationService.get_metrics(
         db_session, start_date=start_date, end_date=end_date)
     assert len(stations) > 0
+
+
+def test_get_station_by_non_existent_id(db_session):
+    # Test retrieving a station with a non-existent ID
+    non_existent_id = 9999
+    station = StationService.get_station_by_id(db_session, non_existent_id)
+    assert station is None, "Expected no station to be found for a non-existent ID"
+
+
+def test_create_metric_with_non_existent_station(db_session):
+    # Try to create a metric with a non-existent station_id
+    non_existent_station_id = 9999
+    metric_data = MetricCreate(
+        temperature=22.0,
+        humidity=45.0,
+        wind_speed=5.0,
+        wind_direction="N",
+        precipitation=0.0
+    )
+
+    # Check that the HTTPException is raised with the correct status code and detail
+    with pytest.raises(HTTPException) as exc_info:
+        StationService.create_metric(
+            db_session, metric_data, non_existent_station_id)
+
+    assert exc_info.value.status_code == 404
+    assert exc_info.value.detail == "Station not found"
+
+
+def test_get_metrics_with_invalid_date_range(db_session):
+    # Test fetching metrics with an invalid date range
+    start_date = datetime.utcnow() + timedelta(days=1)  # Future date
+    end_date = datetime.utcnow()  # Past date
+
+    # Fetch metrics with the invalid date range
+    stations = StationService.get_metrics(
+        db_session, start_date=start_date, end_date=end_date
+    )
+
+    # Check if the result is None or an empty list
+    if stations is None:
+        stations = []
+
+    assert len(
+        stations) == 0, "Expected no metrics to be found for an invalid date range"

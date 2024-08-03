@@ -26,7 +26,7 @@ class StationCreate(StationBase):
     class Config:
         from_attributes = True
 
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "name": "Sample Weather Station",
                 "longitude": -122.4194,

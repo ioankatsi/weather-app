@@ -1,4 +1,4 @@
-from pydantic import BaseModel, confloat
+from pydantic import BaseModel, confloat, validator
 from datetime import datetime
 from typing import Optional, List, Literal
 
@@ -28,7 +28,14 @@ class MetricBase(BaseModel):
 
 
 class MetricCreate(MetricBase):
-    pass
+    @validator('wind_direction', pre=True, always=True)
+    def uppercase_wind_direction(cls, value):
+        if value:
+            return value.upper()
+        return value
+
+    class Config:
+        from_attributes = True
 
 
 class Metric(MetricBase):
@@ -45,3 +52,9 @@ class MetricUpdate(BaseModel):
     wind_direction: Optional[Literal["N", "NE",
                                      "E", "SE", "S", "SW", "W", "NW"]] = None
     precipitation: Optional[confloat(ge=0, le=10000.0)] = None
+
+    @validator('wind_direction', pre=True, always=True)
+    def uppercase_wind_direction(cls, value):
+        if value:
+            return value.upper()
+        return value

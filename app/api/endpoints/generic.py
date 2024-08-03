@@ -1,6 +1,6 @@
-from fastapi import APIRouter
+from fastapi import APIRouter, Depends
+from app.api.dependencies.auth import get_current_user
 import os
-
 
 router = APIRouter()
 
@@ -10,13 +10,14 @@ def health_check():
     """
     Health check endpoint to ensure the application is running properly.
     """
+
     return {"status": "healthy"}
 
 # Version Endpoint
 
 
 @router.get("/version", summary="API Version", description="Get the version of the API.")
-def get_version():
+def get_version(current_user: dict = Depends(get_current_user)):
     """
     Version endpoint to retrieve the current version of the API.
     """

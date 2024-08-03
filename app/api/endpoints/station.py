@@ -8,6 +8,9 @@ from app.schemas.metric import Metric, MetricCreate, MetricUpdate
 from app.services.station_service import StationService
 from app.api.dependencies.auth import get_current_user
 from app.schemas.user import TokenData
+from app.core.log_conf import logging
+
+api_logger = logging.getLogger("app")
 
 router = APIRouter()
 
@@ -37,7 +40,7 @@ def create_station(station: StationCreate = Body(
                 "latitude": 37.7749,
                 "is_active": True
     }
-), db: Session = Depends(get_db)):
+), db: Session = Depends(get_db), current_user: dict = Depends(get_current_user)):
     return StationService.create_station(db=db, station=station)
 
 
@@ -100,7 +103,7 @@ def get_station(db: Session = Depends(get_db), current_user: dict = Depends(get_
         }
     }
 })
-def get_station(station_id: int, db: Session = Depends(get_db)):
+def get_station(station_id: int, db: Session = Depends(get_db), current_user: dict = Depends(get_current_user)):
     """
     Create weather stations.
     """
@@ -134,7 +137,7 @@ def update_station(station_id: int, station_update: StationUpdate = Body(
             "name": "Sample Weather Station New Name",
             "longitude": -10.4194,
             "is_active": False
-        }), db: Session = Depends(get_db)):
+        }), db: Session = Depends(get_db), current_user: dict = Depends(get_current_user)):
     """
     Update a station's information.
 
@@ -166,7 +169,7 @@ def update_station(station_id: int, station_update: StationUpdate = Body(
         }
     }
 })
-def delete_station(station_id: int, db: Session = Depends(get_db),
+def delete_station(station_id: int, db: Session = Depends(get_db), current_user: dict = Depends(get_current_user)
                    ):
     """
     Delete a specific station by ID.
@@ -211,7 +214,8 @@ def create_metric(station_id: int, metric: MetricCreate = Body(
             "wind_speed": 2,
             "wind_direction": "NE",
             "precipitation": 12,
-        }), db: Session = Depends(get_db)):
+        }), db: Session = Depends(get_db), current_user: dict = Depends(get_current_user)):
+
     return StationService.create_metric(db=db, metric_data=metric, station_id=station_id)
 
 
@@ -266,7 +270,7 @@ def create_metric(station_id: int, metric: MetricCreate = Body(
         }
     }
 })
-def get_metric(station_id: int, db: Session = Depends(get_db)):
+def get_metric(station_id: int, db: Session = Depends(get_db), current_user: dict = Depends(get_current_user)):
     stationMetrics = StationService.get_metrics_for_station(
         db=db, station_id=station_id)
     if stationMetrics is None:
@@ -305,7 +309,7 @@ def update_metric(
             "wind_direction": "NE",
             "precipitation": 12,
         }),
-    db: Session = Depends(get_db)
+    db: Session = Depends(get_db), current_user: dict = Depends(get_current_user)
 ):
     station = StationService.get_station_by_id(db=db, station_id=station_id)
     if not station:

@@ -1,13 +1,14 @@
 from fastapi import APIRouter, Body, Depends, HTTPException
-from typing import List, Dict, Optional
+from typing import List
 from sqlalchemy.orm import Session
 from app.api.dependencies.db import get_db
 from app.schemas.station import Station as StationWithMetrics
-from app.schemas.metric import Metric, MetricUpdate, MetricsRequestModel
+from app.schemas.metric import MetricsRequestModel
 from app.services.station_service import StationService
-from datetime import datetime
+from app.api.dependencies.auth import get_current_user
+from app.core.log_conf import logging
 
-
+api_logger = logging.getLogger("app")
 router = APIRouter()
 
 
@@ -83,15 +84,25 @@ def get_metrics(
                     "station_ids": [1, 2, 4]
         }
     }, description="Request body containing filter parameters."),
-    db: Session = Depends(get_db)
+    db: Session = Depends(get_db), current_user: dict = Depends(get_current_user)
 ):
     """
     Despite being a POST request, this method is used to fetch metrics data.
 
     - **start_date**: Optional start date for filtering metrics.
     - **end_date**: Optional end date for filtering metrics.
-    - **station_ids**: Optional dictionary containing a list of station IDs to filter metrics.
+    - **station_ids**: Optional dictionary containing a list of station IDs to filter metrics. Example payload
+    Example payload:
 
+    ```json
+    {
+        "start_date": "2024-08-03 12:42:18",
+        "end_date": "2024-08-03 12:42:18",
+        "station_ids": {
+            "station_ids": [1, 2, 4]
+        }
+    }
+    ```
     In order to get full results an empty json '{}' must be passed as request body
     """
 
@@ -101,8 +112,8 @@ def get_metrics(
         end_date=request_body.end_date,
         station_ids=request_body.station_ids
     )
-
     if not metrics:
+        api_logger.warning('Metrics not found')
         raise HTTPException(status_code=404, detail="Metrics not found")
 
     return metrics
