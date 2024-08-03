@@ -2,6 +2,8 @@
 SCRIPTPATH=$(pwd -P)
 cd "$SCRIPTPATH/"
 
+curl -o wait-for-it.sh https://raw.githubusercontent.com/vishnubob/wait-for-it/master/wait-for-it.sh
+
 # Exit immediately if a command exits with a non-zero status
 set -e
 
@@ -14,4 +16,4 @@ cd ..
 pip3 install --upgrade pip && pip3 install -r requirements.txt
 
 # Start the FastAPI server
-exec uvicorn app.main:app --host 0.0.0.0 --port 8001
+exec uvicorn app.main:app --host 0.0.0.0 --port 8000
