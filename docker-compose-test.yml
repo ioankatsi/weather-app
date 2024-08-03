@@ -1,0 +1,30 @@
+version: '3.9'
+
+services:
+  db:
+    image: postgres:13
+    container_name: weather_test_db
+    environment:
+      POSTGRES_DB: weatherdb
+      POSTGRES_USER: weather
+      POSTGRES_PASSWORD: weatherpassword
+    ports:
+      - '5431:5432' # Maps port 5431 on the host to port 5432 in the container
+
+  backend:
+    build: .
+    container_name: weather_app_test
+    working_dir: /app
+    environment:
+      POSTGRES_DB: weatherdb
+      POSTGRES_USER: weather
+      POSTGRES_PASSWORD: weatherpassword
+      DATABASE_URL: postgresql://weather:weatherpassword@db:5432/weatherdb
+      ENVIRONMENT: deployment
+    command: bash -c "bin/wait-for-it.sh db:5431 -- bash bin/tests.sh"
+    volumes:
+      - .:/app
+    ports:
+      - '8000:8000'
+    depends_on:
+      - db
