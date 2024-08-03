@@ -1,421 +1,185 @@
-# weather-app
+## General
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Coverage report</title>
-    <link rel="icon" sizes="32x32" href="favicon_32_cb_58284776.png">
-    <link rel="stylesheet" href="style_cb_8e611ae1.css" type="text/css">
-    <script src="coverage_html_cb_6fb7b396.js" defer></script>
-</head>
-<body class="indexfile">
-<header>
-    <div class="content">
-        <h1>Coverage report:
-            <span class="pc_cov">78%</span>
-        </h1>
-        <aside id="help_panel_wrapper">
-            <input id="help_panel_state" type="checkbox">
-            <label for="help_panel_state">
-                <img id="keyboard_icon" src="keybd_closed_cb_ce680311.png" alt="Show/hide keyboard shortcuts">
-            </label>
-            <div id="help_panel">
-                <p class="legend">Shortcuts on this page</p>
-                <div class="keyhelp">
-                    <p>
-                        <kbd>f</kbd>
-                        <kbd>n</kbd>
-                        <kbd>s</kbd>
-                        <kbd>m</kbd>
-                        <kbd>x</kbd>
-                        <kbd>c</kbd>
-                        &nbsp; change column sorting
-                    </p>
-                    <p>
-                        <kbd>[</kbd>
-                        <kbd>]</kbd>
-                        &nbsp; prev/next file
-                    </p>
-                    <p>
-                        <kbd>?</kbd> &nbsp; show/hide this help
-                    </p>
-                </div>
-            </div>
-        </aside>
-        <form id="filter_container">
-            <input id="filter" type="text" value="" placeholder="filter...">
-            <div>
-                <input id="hide100" type="checkbox" >
-                <label for="hide100">hide covered</label>
-            </div>
-        </form>
-        <h2>
-                <a class="button" href="index.html">Files</a>
-                <a class="button current">Functions</a>
-                <a class="button" href="class_index.html">Classes</a>
-        </h2>
-        <p class="text">
-            <a class="nav" href="https://coverage.readthedocs.io/en/7.6.0">coverage.py v7.6.0</a>,
-            created at 2024-08-03 17:15 +0300
-        </p>
-    </div>
-</header>
-<main id="index">
-    <table class="index" data-sortable>
-        <thead>
-            <tr class="tablehead" title="Click to sort">
-                <th id="file" class="name left" aria-sort="none" data-shortcut="f">File<span class="arrows"></span></th>
-                <th id="region" class="name left" aria-sort="none" data-default-sort-order="ascending" data-shortcut="n">function<span class="arrows"></span></th>
-                <th id="statements" aria-sort="none" data-default-sort-order="descending" data-shortcut="s">statements<span class="arrows"></span></th>
-                <th id="missing" aria-sort="none" data-default-sort-order="descending" data-shortcut="m">missing<span class="arrows"></span></th>
-                <th id="excluded" aria-sort="none" data-default-sort-order="descending" data-shortcut="x">excluded<span class="arrows"></span></th>
-                <th id="coverage" class="right" aria-sort="none" data-shortcut="c">coverage<span class="arrows"></span></th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr class="region">
-                <td class="name left"><a href="z_8f7e1016f2d37417___init___py.html">app/core/__init__.py</a></td>
-                <td class="name left"><a href="z_8f7e1016f2d37417___init___py.html"><data value=''><span class='no-noun'>(no function)</span></data></a></td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td class="right" data-ratio="0 0">100%</td>
-            </tr>
-            <tr class="region">
-                <td class="name left"><a href="z_8f7e1016f2d37417_config_py.html">app/core/config.py</a></td>
-                <td class="name left"><a href="z_8f7e1016f2d37417_config_py.html"><data value=''><span class='no-noun'>(no function)</span></data></a></td>
-                <td>9</td>
-                <td>9</td>
-                <td>0</td>
-                <td class="right" data-ratio="0 9">0%</td>
-            </tr>
-            <tr class="region">
-                <td class="name left"><a href="z_395c4f306d1419cf___init___py.html">app/db/__init__.py</a></td>
-                <td class="name left"><a href="z_395c4f306d1419cf___init___py.html"><data value=''><span class='no-noun'>(no function)</span></data></a></td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td class="right" data-ratio="0 0">100%</td>
-            </tr>
-            <tr class="region">
-                <td class="name left"><a href="z_395c4f306d1419cf_base_py.html">app/db/base.py</a></td>
-                <td class="name left"><a href="z_395c4f306d1419cf_base_py.html"><data value=''><span class='no-noun'>(no function)</span></data></a></td>
-                <td>2</td>
-                <td>0</td>
-                <td>0</td>
-                <td class="right" data-ratio="2 2">100%</td>
-            </tr>
-            <tr class="region">
-                <td class="name left"><a href="z_395c4f306d1419cf_session_py.html">app/db/session.py</a></td>
-                <td class="name left"><a href="z_395c4f306d1419cf_session_py.html"><data value=''><span class='no-noun'>(no function)</span></data></a></td>
-                <td>5</td>
-                <td>5</td>
-                <td>0</td>
-                <td class="right" data-ratio="0 5">0%</td>
-            </tr>
-            <tr class="region">
-                <td class="name left"><a href="z_5f5a17c013354698_main_py.html#t25">app/main.py</a></td>
-                <td class="name left"><a href="z_5f5a17c013354698_main_py.html#t25"><data value='custom_openapi'>custom_openapi</data></a></td>
-                <td>5</td>
-                <td>5</td>
-                <td>0</td>
-                <td class="right" data-ratio="0 5">0%</td>
-            </tr>
-            <tr class="region">
-                <td class="name left"><a href="z_5f5a17c013354698_main_py.html#t46">app/main.py</a></td>
-                <td class="name left"><a href="z_5f5a17c013354698_main_py.html#t46"><data value='docs_redirect'>docs_redirect</data></a></td>
-                <td>1</td>
-                <td>1</td>
-                <td>0</td>
-                <td class="right" data-ratio="0 1">0%</td>
-            </tr>
-            <tr class="region">
-                <td class="name left"><a href="z_5f5a17c013354698_main_py.html#t54">app/main.py</a></td>
-                <td class="name left"><a href="z_5f5a17c013354698_main_py.html#t54"><data value='register'>register</data></a></td>
-                <td>8</td>
-                <td>8</td>
-                <td>0</td>
-                <td class="right" data-ratio="0 8">0%</td>
-            </tr>
-            <tr class="region">
-                <td class="name left"><a href="z_5f5a17c013354698_main_py.html#t68">app/main.py</a></td>
-                <td class="name left"><a href="z_5f5a17c013354698_main_py.html#t68"><data value='login'>login</data></a></td>
-                <td>6</td>
-                <td>6</td>
-                <td>0</td>
-                <td class="right" data-ratio="0 6">0%</td>
-            </tr>
-            <tr class="region">
-                <td class="name left"><a href="z_5f5a17c013354698_main_py.html">app/main.py</a></td>
-                <td class="name left"><a href="z_5f5a17c013354698_main_py.html"><data value=''><span class='no-noun'>(no function)</span></data></a></td>
-                <td>32</td>
-                <td>32</td>
-                <td>0</td>
-                <td class="right" data-ratio="0 32">0%</td>
-            </tr>
-            <tr class="region">
-                <td class="name left"><a href="z_6c0e4b930745278b_station_py.html#t41">app/models/station.py</a></td>
-                <td class="name left"><a href="z_6c0e4b930745278b_station_py.html#t41"><data value='as_dict'>Metric.as_dict</data></a></td>
-                <td>1</td>
-                <td>1</td>
-                <td>0</td>
-                <td class="right" data-ratio="0 1">0%</td>
-            </tr>
-            <tr class="region">
-                <td class="name left"><a href="z_6c0e4b930745278b_station_py.html">app/models/station.py</a></td>
-                <td class="name left"><a href="z_6c0e4b930745278b_station_py.html"><data value=''><span class='no-noun'>(no function)</span></data></a></td>
-                <td>28</td>
-                <td>0</td>
-                <td>0</td>
-                <td class="right" data-ratio="28 28">100%</td>
-            </tr>
-            <tr class="region">
-                <td class="name left"><a href="z_c0f67d75e686303c_metric_py.html">app/schemas/metric.py</a></td>
-                <td class="name left"><a href="z_c0f67d75e686303c_metric_py.html"><data value=''><span class='no-noun'>(no function)</span></data></a></td>
-                <td>31</td>
-                <td>0</td>
-                <td>0</td>
-                <td class="right" data-ratio="31 31">100%</td>
-            </tr>
-            <tr class="region">
-                <td class="name left"><a href="z_c0f67d75e686303c_station_py.html">app/schemas/station.py</a></td>
-                <td class="name left"><a href="z_c0f67d75e686303c_station_py.html"><data value=''><span class='no-noun'>(no function)</span></data></a></td>
-                <td>36</td>
-                <td>0</td>
-                <td>0</td>
-                <td class="right" data-ratio="36 36">100%</td>
-            </tr>
-            <tr class="region">
-                <td class="name left"><a href="z_c318f3fa19a49f69___init___py.html">app/services/__init__.py</a></td>
-                <td class="name left"><a href="z_c318f3fa19a49f69___init___py.html"><data value=''><span class='no-noun'>(no function)</span></data></a></td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td class="right" data-ratio="0 0">100%</td>
-            </tr>
-            <tr class="region">
-                <td class="name left"><a href="z_c318f3fa19a49f69_station_service_py.html#t13">app/services/station_service.py</a></td>
-                <td class="name left"><a href="z_c318f3fa19a49f69_station_service_py.html#t13"><data value='get_stations'>StationService.get_stations</data></a></td>
-                <td>1</td>
-                <td>0</td>
-                <td>0</td>
-                <td class="right" data-ratio="1 1">100%</td>
-            </tr>
-            <tr class="region">
-                <td class="name left"><a href="z_c318f3fa19a49f69_station_service_py.html#t17">app/services/station_service.py</a></td>
-                <td class="name left"><a href="z_c318f3fa19a49f69_station_service_py.html#t17"><data value='get_station_by_id'>StationService.get_station_by_id</data></a></td>
-                <td>1</td>
-                <td>0</td>
-                <td>0</td>
-                <td class="right" data-ratio="1 1">100%</td>
-            </tr>
-            <tr class="region">
-                <td class="name left"><a href="z_c318f3fa19a49f69_station_service_py.html#t21">app/services/station_service.py</a></td>
-                <td class="name left"><a href="z_c318f3fa19a49f69_station_service_py.html#t21"><data value='create_station'>StationService.create_station</data></a></td>
-                <td>5</td>
-                <td>0</td>
-                <td>0</td>
-                <td class="right" data-ratio="5 5">100%</td>
-            </tr>
-            <tr class="region">
-                <td class="name left"><a href="z_c318f3fa19a49f69_station_service_py.html#t29">app/services/station_service.py</a></td>
-                <td class="name left"><a href="z_c318f3fa19a49f69_station_service_py.html#t29"><data value='update_station'>StationService.update_station</data></a></td>
-                <td>6</td>
-                <td>0</td>
-                <td>0</td>
-                <td class="right" data-ratio="6 6">100%</td>
-            </tr>
-            <tr class="region">
-                <td class="name left"><a href="z_c318f3fa19a49f69_station_service_py.html#t39">app/services/station_service.py</a></td>
-                <td class="name left"><a href="z_c318f3fa19a49f69_station_service_py.html#t39"><data value='delete_station'>StationService.delete_station</data></a></td>
-                <td>2</td>
-                <td>0</td>
-                <td>0</td>
-                <td class="right" data-ratio="2 2">100%</td>
-            </tr>
-            <tr class="region">
-                <td class="name left"><a href="z_c318f3fa19a49f69_station_service_py.html#t44">app/services/station_service.py</a></td>
-                <td class="name left"><a href="z_c318f3fa19a49f69_station_service_py.html#t44"><data value='create_metric'>StationService.create_metric</data></a></td>
-                <td>8</td>
-                <td>1</td>
-                <td>0</td>
-                <td class="right" data-ratio="7 8">88%</td>
-            </tr>
-            <tr class="region">
-                <td class="name left"><a href="z_c318f3fa19a49f69_station_service_py.html#t62">app/services/station_service.py</a></td>
-                <td class="name left"><a href="z_c318f3fa19a49f69_station_service_py.html#t62"><data value='get_metrics_for_station'>StationService.get_metrics_for_station</data></a></td>
-                <td>1</td>
-                <td>0</td>
-                <td>0</td>
-                <td class="right" data-ratio="1 1">100%</td>
-            </tr>
-            <tr class="region">
-                <td class="name left"><a href="z_c318f3fa19a49f69_station_service_py.html#t66">app/services/station_service.py</a></td>
-                <td class="name left"><a href="z_c318f3fa19a49f69_station_service_py.html#t66"><data value='get_metric_by_id'>StationService.get_metric_by_id</data></a></td>
-                <td>1</td>
-                <td>0</td>
-                <td>0</td>
-                <td class="right" data-ratio="1 1">100%</td>
-            </tr>
-            <tr class="region">
-                <td class="name left"><a href="z_c318f3fa19a49f69_station_service_py.html#t70">app/services/station_service.py</a></td>
-                <td class="name left"><a href="z_c318f3fa19a49f69_station_service_py.html#t70"><data value='get_metric_by_date'>StationService.get_metric_by_date</data></a></td>
-                <td>3</td>
-                <td>0</td>
-                <td>0</td>
-                <td class="right" data-ratio="3 3">100%</td>
-            </tr>
-            <tr class="region">
-                <td class="name left"><a href="z_c318f3fa19a49f69_station_service_py.html#t82">app/services/station_service.py</a></td>
-                <td class="name left"><a href="z_c318f3fa19a49f69_station_service_py.html#t82"><data value='get_metrics'>StationService.get_metrics</data></a></td>
-                <td>20</td>
-                <td>3</td>
-                <td>0</td>
-                <td class="right" data-ratio="17 20">85%</td>
-            </tr>
-            <tr class="region">
-                <td class="name left"><a href="z_c318f3fa19a49f69_station_service_py.html">app/services/station_service.py</a></td>
-                <td class="name left"><a href="z_c318f3fa19a49f69_station_service_py.html"><data value=''><span class='no-noun'>(no function)</span></data></a></td>
-                <td>29</td>
-                <td>0</td>
-                <td>0</td>
-                <td class="right" data-ratio="29 29">100%</td>
-            </tr>
-            <tr class="region">
-                <td class="name left"><a href="z_5129300603c71d00___init___py.html">app/tests/__init__.py</a></td>
-                <td class="name left"><a href="z_5129300603c71d00___init___py.html"><data value=''><span class='no-noun'>(no function)</span></data></a></td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td class="right" data-ratio="0 0">100%</td>
-            </tr>
-            <tr class="region">
-                <td class="name left"><a href="z_5129300603c71d00_basic_unit_tests_py.html#t25">app/tests/basic_unit_tests.py</a></td>
-                <td class="name left"><a href="z_5129300603c71d00_basic_unit_tests_py.html#t25"><data value='db_session'>db_session</data></a></td>
-                <td>3</td>
-                <td>0</td>
-                <td>0</td>
-                <td class="right" data-ratio="3 3">100%</td>
-            </tr>
-            <tr class="region">
-                <td class="name left"><a href="z_5129300603c71d00_basic_unit_tests_py.html#t32">app/tests/basic_unit_tests.py</a></td>
-                <td class="name left"><a href="z_5129300603c71d00_basic_unit_tests_py.html#t32"><data value='test_create_station'>test_create_station</data></a></td>
-                <td>4</td>
-                <td>0</td>
-                <td>0</td>
-                <td class="right" data-ratio="4 4">100%</td>
-            </tr>
-            <tr class="region">
-                <td class="name left"><a href="z_5129300603c71d00_basic_unit_tests_py.html#t40">app/tests/basic_unit_tests.py</a></td>
-                <td class="name left"><a href="z_5129300603c71d00_basic_unit_tests_py.html#t40"><data value='test_get_stations'>test_get_stations</data></a></td>
-                <td>2</td>
-                <td>0</td>
-                <td>0</td>
-                <td class="right" data-ratio="2 2">100%</td>
-            </tr>
-            <tr class="region">
-                <td class="name left"><a href="z_5129300603c71d00_basic_unit_tests_py.html#t45">app/tests/basic_unit_tests.py</a></td>
-                <td class="name left"><a href="z_5129300603c71d00_basic_unit_tests_py.html#t45"><data value='test_get_station_by_id'>test_get_station_by_id</data></a></td>
-                <td>3</td>
-                <td>0</td>
-                <td>0</td>
-                <td class="right" data-ratio="3 3">100%</td>
-            </tr>
-            <tr class="region">
-                <td class="name left"><a href="z_5129300603c71d00_basic_unit_tests_py.html#t51">app/tests/basic_unit_tests.py</a></td>
-                <td class="name left"><a href="z_5129300603c71d00_basic_unit_tests_py.html#t51"><data value='test_update_station'>test_update_station</data></a></td>
-                <td>7</td>
-                <td>0</td>
-                <td>0</td>
-                <td class="right" data-ratio="7 7">100%</td>
-            </tr>
-            <tr class="region">
-                <td class="name left"><a href="z_5129300603c71d00_basic_unit_tests_py.html#t63">app/tests/basic_unit_tests.py</a></td>
-                <td class="name left"><a href="z_5129300603c71d00_basic_unit_tests_py.html#t63"><data value='test_delete_station'>test_delete_station</data></a></td>
-                <td>4</td>
-                <td>0</td>
-                <td>0</td>
-                <td class="right" data-ratio="4 4">100%</td>
-            </tr>
-            <tr class="region">
-                <td class="name left"><a href="z_5129300603c71d00_basic_unit_tests_py.html#t70">app/tests/basic_unit_tests.py</a></td>
-                <td class="name left"><a href="z_5129300603c71d00_basic_unit_tests_py.html#t70"><data value='test_create_metric'>test_create_metric</data></a></td>
-                <td>9</td>
-                <td>0</td>
-                <td>0</td>
-                <td class="right" data-ratio="9 9">100%</td>
-            </tr>
-            <tr class="region">
-                <td class="name left"><a href="z_5129300603c71d00_basic_unit_tests_py.html#t92">app/tests/basic_unit_tests.py</a></td>
-                <td class="name left"><a href="z_5129300603c71d00_basic_unit_tests_py.html#t92"><data value='test_get_metrics_for_station'>test_get_metrics_for_station</data></a></td>
-                <td>3</td>
-                <td>0</td>
-                <td>0</td>
-                <td class="right" data-ratio="3 3">100%</td>
-            </tr>
-            <tr class="region">
-                <td class="name left"><a href="z_5129300603c71d00_basic_unit_tests_py.html#t98">app/tests/basic_unit_tests.py</a></td>
-                <td class="name left"><a href="z_5129300603c71d00_basic_unit_tests_py.html#t98"><data value='test_get_metric_by_id'>test_get_metric_by_id</data></a></td>
-                <td>3</td>
-                <td>0</td>
-                <td>0</td>
-                <td class="right" data-ratio="3 3">100%</td>
-            </tr>
-            <tr class="region">
-                <td class="name left"><a href="z_5129300603c71d00_basic_unit_tests_py.html#t105">app/tests/basic_unit_tests.py</a></td>
-                <td class="name left"><a href="z_5129300603c71d00_basic_unit_tests_py.html#t105"><data value='test_get_metric_by_date'>test_get_metric_by_date</data></a></td>
-                <td>22</td>
-                <td>1</td>
-                <td>0</td>
-                <td class="right" data-ratio="21 22">95%</td>
-            </tr>
-            <tr class="region">
-                <td class="name left"><a href="z_5129300603c71d00_basic_unit_tests_py.html#t156">app/tests/basic_unit_tests.py</a></td>
-                <td class="name left"><a href="z_5129300603c71d00_basic_unit_tests_py.html#t156"><data value='test_get_metrics'>test_get_metrics</data></a></td>
-                <td>4</td>
-                <td>0</td>
-                <td>0</td>
-                <td class="right" data-ratio="4 4">100%</td>
-            </tr>
-            <tr class="region">
-                <td class="name left"><a href="z_5129300603c71d00_basic_unit_tests_py.html">app/tests/basic_unit_tests.py</a></td>
-                <td class="name left"><a href="z_5129300603c71d00_basic_unit_tests_py.html"><data value=''><span class='no-noun'>(no function)</span></data></a></td>
-                <td>27</td>
-                <td>0</td>
-                <td>0</td>
-                <td class="right" data-ratio="27 27">100%</td>
-            </tr>
-        </tbody>
-        <tfoot>
-            <tr class="total">
-                <td class="name left">Total</td>
-                <td class="name left">&nbsp;</td>
-                <td>332</td>
-                <td>72</td>
-                <td>0</td>
-                <td class="right" data-ratio="260 332">78%</td>
-            </tr>
-        </tfoot>
-    </table>
-    <p id="no_rows">
-        No items found using the specified filter.
-    </p>
-</main>
-<footer>
-    <div class="content">
-        <p>
-            <a class="nav" href="https://coverage.readthedocs.io/en/7.6.0">coverage.py v7.6.0</a>,
-            created at 2024-08-03 17:15 +0300
-        </p>
-    </div>
-    <aside class="hidden">
-        <a id="prevFileLink" class="nav" href=""></a>
-        <a id="nextFileLink" class="nav" href=""></a>
-        <button type="button" class="button_prev_file" data-shortcut="["></button>
-        <button type="button" class="button_next_file" data-shortcut="]"></button>
-        <button type="button" class="button_show_hide_help" data-shortcut="?"></button>
-    </aside>
-</footer>
-</body>
-</html>
+This is my solution for the [NeuroPublic's backend assignment](https://github.com/ioankatsi/weather-app/blob/dev/np_python_assignment.pdf).
+
+I used [FastAPI](https://fastapi.tiangolo.com/) for implementing the task. As data storage I opted for postgesql.
+
+Mainly the project structure is discussed in the section bellow.
+A simplified API documentation can be found on `http://localhost:8000/docs#/`, when the server is running.
+
+## How to run the Project
+
+To run the containerized service,
+you can find **Dockerfile** and two docker-compose files [**docker-compose-main.yaml**, **docker-compose-test.yaml**] on the root directory.
+
+- **docker-compose-main.yaml**
+  - You can use this file to run the full containerized service.
+- **docker-compose-test.yaml**
+  - You can use this file to run the tests.
+
+To start the main app, you can do so by:
+
+```bash
+docker-compose -f docker-compose-main.yaml up --build
+```
+
+To stop the main app, you can do so by:
+
+```bash
+docker-compose -f docker-compose-main.yaml down
+```
+
+**WARNING**
+
+If postgresql is running as service on your local machine, should be stopped before deploying the containerized app.
+You could check by:
+
+```bash
+sudo service postgresql status
+```
+
+**P.S** I do not use `--detatch` on the docker-compose so to be able to check that everything is working fine through the logging.
+
+##### Making requests
+
+By default I add some fixtures while setting up the DB.
+
+A user is already registered in the DB and you can use this one in order to authenticate. Of course you can create new ones by using /register endpoint.
+
+The credentials in order to authenticate are:
+
+```
+email: testuser@example.com
+password: testpassword
+```
+
+##### Making requests
+
+You can use OpenAPI, provided by FastApi. You can access that on `http://localhost:8000/docs`
+
+As a first steps authorize youself by using Authorization button on the upper left of Swagger's screeen and then you can proceed with the testing.
+
+##### Running tests
+
+For the tests I built another containerized service, so to be alike the web app environment.
+
+To run the tests, you can do so by:
+
+```bash
+docker-compose -f docker-compose-test.yml up
+```
+
+To exit the containerized service, you can do so by:
+
+```bash
+docker-compose -f docker-compose-test.yml down
+```
+
+**WARNING**
+
+If postgresql is running as service on your local machine, should be stopped before deploying the containerized app.
+You could check by:
+
+```bash
+sudo service postgresql status
+```
+
+and stop it by:
+
+```bash
+sudo service postgresql stop
+```
+
+## Project structure
+
+The project consists of these directories :
+
+- alembic (contains db migrations)
+- api (contains the API router logic)
+- auth (contains basic auth implementation)
+- core (contains basic configuration for db)
+- db (contains db connection logic)
+- models (contains the db models)
+- schemas (Data validation & sanity checks)
+- services (Contains entpoints logic)
+- tests (contains basic testing implementation)
+- bin (contains bash scripts)
+
+## Sanity Check & Data Validation
+
+I have implemented basic data validity and sanity checks in our API. This ensures that all input data is thoroughly validated and meets predefined criteria before processing. These checks enhance the reliability and accuracy of the data managed by the API.
+
+## Logging
+
+I implemented a very simple logging mechaninsm mostly to track errors.
+Logging is essential on a Production level service / web-app
+It provides visibility into how the applications is running on each of the various infrastructure components.
+Log data contains information such as out of memory exception or query & DB errors.
+This is very helpful information that will help us identify the “why” behind a problem either that a user has brought to our attention or that we have uncovered.
+
+The logs reside in `/logs` folder. You should expect to see stored logs only if an exception/error took place.
+
+## Testing and Coverage
+
+Basic tests have been created for most of the endpoints in order to test their functionality.
+I also made a coverage report which can be run as
+
+```
+docker-compose -f docker-compose-test.yml up
+```
+
+The result will be 77% coverage.
+
+```text
+Name                              Stmts   Miss  Cover   Missing
+============================== 13 passed in 1.69s ==============================
+Name                              Stmts   Miss  Cover   Missing
+---------------------------------------------------------------
+app/core/__init__.py                  0      0   100%
+app/core/config.py                    9      9     0%   1-16
+app/core/log_conf.py                  7      0   100%
+app/db/__init__.py                    0      0   100%
+app/db/base.py                        2      0   100%
+app/db/session.py                     5      5     0%   1-6
+app/main.py                          52     52     0%   3-79
+app/models/station.py                29      1    97%   42
+app/schemas/metric.py                42      4    90%   35, 58-60
+app/schemas/station.py               36      0   100%
+app/services/__init__.py              0      0   100%
+app/services/station_service.py     107     18    83%   19-20, 27-28, 39-40, 53-54, 62-63, 85-86, 93-94, 101-102, 125, 134
+app/tests/__init__.py                 0      0   100%
+app/tests/basic_unit_tests.py       110      1    99%   145
+---------------------------------------------------------------
+TOTAL                               399     90    77%
+
+```
+
+<h3> Clean Up </h3>
+
+In order to remove all the created containers from your PC you can run
+
+```
+bash bin/clean_up.sh
+```
+
+<h3> Next Steps </h3>
+
+Here are a few examples of future features that I would implement:
+
+<ol>
+<li>Implement Proximity Check for New Stations
+
+<p>When creating a new station, it would be prudent to implement a mechanism to check whether another station already exists within a specified radius. This will help to avoid redundant or overlapping station data and ensure that stations are geographically distinct as required.
+</li>
+
+<li>Develop Radius-Based Metrics Retrieval
+
+<p>Introduce functionality to retrieve metrics based on a specified geographic radius. This feature would allow users to query metrics for a particular region by providing latitude, longitude, and date range as search parameters. This would facilitate more precise and localized data analysis.
+</li>
+</ol>
+
+---
+
+---
+
+**P.S** In case that I was not clear or I missed anything, please let me know. I would be more than happy for a further discussion.
