@@ -3,7 +3,7 @@
 from fastapi import FastAPI, Depends, HTTPException
 from fastapi.openapi.utils import get_openapi
 from fastapi.responses import RedirectResponse
-from app.api.endpoints import station, metric
+from app.api.endpoints import station, metric, generic
 from sqlalchemy.orm import Session
 import jwt
 from jwt import PyJWTError
@@ -37,6 +37,7 @@ def custom_openapi():
 
 app = FastAPI()
 app.openapi = custom_openapi
+app.include_router(generic.router, prefix="/server", tags=["Server Info"])
 app.include_router(station.router, prefix="/stations")
 app.include_router(metric.router, prefix="/metrics", tags=["Metrics"])
 
