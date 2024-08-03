@@ -1,4 +1,4 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, confloat
 from datetime import datetime
 from typing import List, Optional
 from .metric import Metric
@@ -6,8 +6,8 @@ from .metric import Metric
 
 class StationBase(BaseModel):
     name: str
-    longitude: float
-    latitude: float
+    longitude: Optional[confloat(ge=-180.0, le=180.0)] = None
+    latitude: Optional[confloat(ge=-90.0, le=90.0)] = None
     is_active: bool
 
     class Config:
@@ -19,12 +19,21 @@ class StationInfo(StationBase):
     created_at: datetime
     updated_at: datetime
 
-    class Config:
-        from_attributes = True
-
 
 class StationCreate(StationBase):
     pass
+
+    class Config:
+        from_attributes = True
+
+        schema_extra = {
+            "example": {
+                "name": "Sample Weather Station",
+                "longitude": -122.4194,
+                "latitude": 37.7749,
+                "is_active": True
+            }
+        }
 
 
 class Station(StationBase):
@@ -39,8 +48,8 @@ class Station(StationBase):
 
 class StationUpdate(BaseModel):
     name: Optional[str] = None
-    longitude: Optional[float] = None
-    latitude: Optional[float] = None
+    longitude: Optional[confloat(ge=-180.0, le=180.0)] = None
+    latitude: Optional[confloat(ge=-90.0, le=90.0)] = None
     is_active: Optional[bool] = None
 
 

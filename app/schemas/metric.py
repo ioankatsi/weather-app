@@ -1,14 +1,25 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, confloat
 from datetime import datetime
-from typing import Optional
+from typing import Optional, List, Literal
+
+
+class StationIdsModel(BaseModel):
+    station_ids: List[int]
+
+
+class MetricsRequestModel(BaseModel):
+    start_date: Optional[datetime] = None
+    end_date: Optional[datetime] = None
+    station_ids: Optional[StationIdsModel] = None
 
 
 class MetricBase(BaseModel):
-    temperature: float
-    humidity: float
-    wind_speed: float
-    wind_direction: str
-    precipitation: float
+    temperature: Optional[confloat(ge=-50.0, le=100.0)] = None
+    humidity: Optional[confloat(ge=0, le=100.0)] = None
+    wind_speed: Optional[confloat(ge=0, le=200.0)] = None
+    wind_direction: Optional[Literal["N", "NE",
+                                     "E", "SE", "S", "SW", "W", "NW"]] = None
+    precipitation: Optional[confloat(ge=0, le=10000.0)] = None
     created_at: Optional[datetime] = None
     updated_at: Optional[datetime] = None
 
@@ -28,8 +39,9 @@ class Metric(MetricBase):
 
 
 class MetricUpdate(BaseModel):
-    temperature: Optional[float] = None
-    humidity: Optional[float] = None
-    wind_speed: Optional[float] = None
-    wind_direction: Optional[str] = None
-    precipitation: Optional[float] = None
+    temperature: Optional[confloat(ge=-50.0, le=100.0)] = None
+    humidity: Optional[confloat(ge=0, le=100.0)] = None
+    wind_speed: Optional[confloat(ge=0, le=200.0)] = None
+    wind_direction: Optional[Literal["N", "NE",
+                                     "E", "SE", "S", "SW", "W", "NW"]] = None
+    precipitation: Optional[confloat(ge=0, le=10000.0)] = None

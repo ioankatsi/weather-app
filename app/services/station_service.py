@@ -1,10 +1,11 @@
+from typing import List, Optional
 from fastapi import Depends, HTTPException
 from sqlalchemy.orm import joinedload
 from sqlalchemy.orm import Session
 from app.models.station import Station, Metric
 from app.schemas.station import StationCreate, StationUpdate
-from app.schemas.metric import MetricCreate
-from datetime import datetime
+from app.schemas.metric import MetricCreate, StationIdsModel
+from datetime import datetime, timedelta
 
 
 class StationService:
@@ -44,7 +45,7 @@ class StationService:
         # Ensure station_id is valid
         station = db.query(Station).filter(Station.id == station_id).first()
         if not station:
-            raise ValueError("Station ID does not exist")
+            raise HTTPException(status_code=404, detail="Station not found")
 
         metric = Metric(temperature=metric_data.temperature,
                         humidity=metric_data.humidity,
@@ -67,30 +68,61 @@ class StationService:
 
     @staticmethod
     def get_metric_by_date(db: Session, station_id: int, created_at: datetime):
-        return db.query(Metric).filter(Metric.station_id == station_id, Metric.created_at == created_at).first()
+        # Zero out microseconds
+        created_at_no_microseconds = created_at.replace(microsecond=0)
+        next_second = created_at_no_microseconds + timedelta(seconds=1)
+
+        return db.query(Metric).filter(
+            Metric.station_id == station_id,
+            Metric.created_at >= created_at_no_microseconds,
+            Metric.created_at < next_second
+        ).first()
 
     @staticmethod
-    def get_metrics(db: Session, start_date=None, end_date=None, station_ids=None):
+    def get_metrics(db: Session,
+                    start_date: Optional[datetime] = None,
+                    end_date: Optional[datetime] = None,
+                    station_ids: Optional[StationIdsModel] = None):
+
+        # Convert StationIDsModel to list of IDs if provided
+        if station_ids:
+            station_ids_list = station_ids.station_ids
+        else:
+            station_ids_list = None
+
+        # Query to get all stations with their metrics
         query = db.query(Station).options(joinedload(Station.metrics))
 
-        if station_ids:
-            query = query.filter(Station.id.in_(station_ids))
+        # Filter by station IDs if provided
+        if station_ids_list:
+            query = query.filter(Station.id.in_(station_ids_list))
 
+        # Execute the query
         stations = query.all()
+
+        # Adjust start_date and end_date
+        if start_date:
+            start_date = start_date.replace(microsecond=0)
+        if end_date:
+            # Make end_date exclusive
+            end_date = end_date.replace(microsecond=0) + timedelta(seconds=1)
 
         filtered_stations = []
         for station in stations:
+            # Filter metrics based on the provided start_date and end_date
             filtered_metrics = [
                 metric for metric in station.metrics
                 if (start_date is None or metric.created_at >= start_date) and
-                   (end_date is None or metric.created_at <= end_date)
+                   (end_date is None or metric.created_at < end_date)
             ]
             if filtered_metrics:
                 station.metrics = filtered_metrics
                 filtered_stations.append(station)
 
+        # Raise an exception if no stations match the filters
         if not filtered_stations:
             raise HTTPException(
-                status_code=404, detail="No stations found with the given filters.")
+                status_code=404, detail="No stations found with the given filters."
+            )
 
         return filtered_stations
