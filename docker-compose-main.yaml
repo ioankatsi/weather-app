@@ -1,0 +1,30 @@
+version: '3.9'
+
+services:
+  db:
+    image: postgres:13
+    container_name: weather_db
+    environment:
+      - POSTGRES_DB=weatherdb
+      - POSTGRES_USER=weather
+      - POSTGRES_PASSWORD=weatherpassword
+      - DATABASE_URL=postgresql://weather:weatherpassword@db:5432/weatherdb
+    ports:
+      - '5432:5432'
+
+  backend:
+    build: .
+    container_name: weather_backend
+    environment:
+      - POSTGRES_DB=weatherdb
+      - POSTGRES_USER=weather
+      - POSTGRES_PASSWORD=weatherpassword
+      - DATABASE_URL=postgresql://weather:weatherpassword@db:5432/weatherdb
+      - ENVIROMENT=deployment
+    command: bash -c "bin/wait-for-it.sh db:5432 -- bash bin/start.sh"
+    volumes:
+      - .:/app
+    ports:
+      - '8000:8000'
+    depends_on:
+      - db
